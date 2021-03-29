@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #eee;
+}
+main {
+  width: 420px;
+  margin: 0 auto;
+  padding: 10px 30px 30px;
+  background: #fff;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+img {
+  display: block;
+  margin: 0 auto;
+}
+a {
+  color: #123def;
+  text-decoration: none;
+}
+a:hover {
+  color: #abc456;
+}
+.sources {
+  text-align: center;
+}
