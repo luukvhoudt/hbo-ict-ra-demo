@@ -21,9 +21,9 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Push to GitHub Packages
+      - name: Build and Push to GitHub Packages
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: docker.pkg.github.com/luukvhoudt/hbo-ict-ra-demo:amazon-web-services
-          context: ./public/amazon-web-services
+          tags: luukvhoudt/hbo-ict-ra-demo:amazon-web-services
+          context: $GITHUB_WORKSPACE/public/amazon-web-services
