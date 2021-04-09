@@ -1,0 +1,26 @@
+name: Deploy to AWS
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  push:
+    name: Push docker image to Github Packages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Push to GitHub Packages
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          repository: $GITHUB_REPOSITORY/amazon-web-services
+          tags: $GITHUB_REPOSITORY/amazon-web-services:latest
+          context: ./public/amazon-web-services
