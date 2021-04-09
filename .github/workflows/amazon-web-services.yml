@@ -30,3 +30,4 @@ jobs:
           push: true
           tags: luukvhoudt/hbo-ict-ra-demo:amazon-web-services
           context: ./public/amazon-web-services
+          file: ./public/amazon-web-services/Dockerfile
