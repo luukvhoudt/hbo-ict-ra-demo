@@ -27,6 +27,7 @@ jobs:
           CONTEXT: ${{ steps.prep.outputs.context }}
           WEBSITE: ${{ steps.prep.outputs.website }}
         run: |
+          mkdir -p ${CONTEXT}
           cp -fv ./websites/${WEBSITE}/* ${CONTEXT}
 
       - name: Login to GHCR
