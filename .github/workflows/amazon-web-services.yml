@@ -11,25 +11,21 @@ jobs:
     name: Push docker image to Github Container Registry (GHCR)
     runs-on: ubuntu-latest
     steps:
-      - id: prep
+      - name: Prepare the variables
+        id: prep
         run: |
-          REGISTRY=ghcr.io
-          SUBJECT=amazon-web-services
-          echo ::set-output name=registry::${REGISTRY}
-          echo ::set-output name=context::./public/${SUBJECT}
+          echo ::set-output name=registry::ghcr.io
+          echo ::set-output name=context::./dist
           echo ::set-output name=tags::${REGISTRY}/${GITHUB_REPOSITORY}:${SUBJECT}
 
-      - name: Checkout
+      - name: Checkout the files
         uses: actions/checkout@v2
 
-      - name: Fix symlinked files
+      - name: Build the app for production
         env:
           CONTEXT: ${{ steps.prep.outputs.context }}
         run: |
-          rm -v ${CONTEXT}/Dockerfile
-          cp -fv ./public/Dockerfile ${CONTEXT}
-          rm -v ${CONTEXT}/style.css
-          cp -fv ./public/style.css ${CONTEXT}
+          cp -fv ./public/${CONTEXT} ./dist
 
       - name: Login to GHCR
         uses: docker/login-action@v1 
@@ -44,4 +40,4 @@ jobs:
           push: true
           tags: ${{ steps.prep.outputs.tags }}
           context: ${{ steps.prep.outputs.context }}
-          file: ./public/Dockerfile
+          file: ${{ steps.prep.outputs.context }}/Dockerfile
