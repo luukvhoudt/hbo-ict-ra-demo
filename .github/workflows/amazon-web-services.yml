@@ -28,6 +28,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: docker.pkg.github.com/luukvhoudt/hbo-ict-ra-demo:amazon-web-services
+          tags: luukvhoudt/hbo-ict-ra-demo:amazon-web-services
           context: ./public/amazon-web-services
-          file: ./public/amazon-web-services/Dockerfile
+          file: ./public/Dockerfile
