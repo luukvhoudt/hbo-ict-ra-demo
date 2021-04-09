@@ -14,9 +14,12 @@ jobs:
       - name: Prepare the variables
         id: prep
         run: |
-          echo ::set-output name=website::amazon-web-services
-          echo ::set-output name=registry::ghcr.io
-          echo ::set-output name=context::./dist
+          WEBSITE=amazon-web-services
+          REGISTRY=ghcr.io
+          CONTEXT=./dist
+          echo ::set-output name=website::${WEBSITE}
+          echo ::set-output name=registry::${REGISTRY}
+          echo ::set-output name=context::${CONTEXT}
           echo ::set-output name=tags::${REGISTRY}/${GITHUB_REPOSITORY}:${SUBJECT}
 
       - name: Checkout the files
