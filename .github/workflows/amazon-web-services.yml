@@ -2,9 +2,9 @@ name: Deploy to AWS
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, amazon-web-services ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, amazon-web-services ]
 
 jobs:
   push:
@@ -25,6 +25,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: luukvhoudt/hbo-ict-ra-demo:amazon-web-services
+          tags: ghcr.io/luukvhoudt/hbo-ict-ra-demo:amazon-web-services
           context: ./public/amazon-web-services
           file: ./public/Dockerfile
