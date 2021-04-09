@@ -20,7 +20,7 @@ jobs:
           echo ::set-output name=website::${WEBSITE}
           echo ::set-output name=registry::${REGISTRY}
           echo ::set-output name=context::${CONTEXT}
-          echo ::set-output name=tags::${REGISTRY}/${GITHUB_REPOSITORY}:${SUBJECT}
+          echo ::set-output name=tags::${REGISTRY}/${GITHUB_REPOSITORY}:${WEBSITE}
 
       - name: Checkout the files
         uses: actions/checkout@v2
