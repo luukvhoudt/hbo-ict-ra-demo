@@ -31,7 +31,7 @@ jobs:
           WEBSITE: ${{ steps.prep.outputs.website }}
         run: |
           mkdir -p ${CONTEXT}
-          cp -fv ./websites/${WEBSITE}/* ${CONTEXT}
+          cp -rfv ./websites/${WEBSITE}/* ${CONTEXT}
 
       - name: Login to GHCR
         uses: docker/login-action@v1 
