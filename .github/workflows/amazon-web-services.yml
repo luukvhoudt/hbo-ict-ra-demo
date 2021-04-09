@@ -26,9 +26,9 @@ jobs:
         env:
           CONTEXT: ${{ steps.prep.outputs.context }}
         run: |
-          rm -fv ${CONTEXT}/Dockerfile
+          rm -v ${CONTEXT}/Dockerfile
           cp -fv ./public/Dockerfile ${CONTEXT}
-          rm -fv ${CONTEXT}/style.css
+          rm -v ${CONTEXT}/style.css
           cp -fv ./public/style.css ${CONTEXT}
 
       - name: Login to GHCR
